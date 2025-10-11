@@ -13,6 +13,14 @@ const Message = ({ messageDetails }) => {
     }
   }, []);
 
+  const formatTime = (iso) => {
+    if (!iso) return "";
+    const d = new Date(iso);
+    const hours = d.getHours().toString().padStart(2, "0");
+    const minutes = d.getMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`;
+  };
+
   return (
     <>
       <div
@@ -36,7 +44,7 @@ const Message = ({ messageDetails }) => {
           </div>
         </div>
         <div className="chat-header">
-          <time className="text-xs opacity-50">12:45</time>
+          <time className="text-xs opacity-50">{formatTime(messageDetails?.createdAt)}</time>
         </div>
         <div className="chat-bubble">{messageDetails?.message}</div>
       </div>

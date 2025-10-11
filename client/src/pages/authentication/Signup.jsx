@@ -42,7 +42,7 @@ const Signup = () => {
   return (
     <div className="flex justify-center items-center p-6 min-h-screen">
       <div className="max-w-[40rem] w-full flex flex-col gap-5 bg-base-200 p-6 rounded-lg">
-        <h2 className="text-2xl font-semibold">Please Signup..!!</h2>
+  <h2 className="text-2xl font-semibold text-[#34D399]">Signup</h2>
 
         <label className="input input-bordered flex items-center gap-2">
           <FaUser />

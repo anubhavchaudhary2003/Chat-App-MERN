@@ -10,13 +10,16 @@ const SendMessage = () => {
   const [message, setMessage] = useState("");
 
   const handleSendMessage = () => {
+    const trimmed = message.trim();
+    if (!trimmed) return;
+
     dispatch(
       sendMessageThunk({
         recieverId: selectedUser?._id,
-        message,
+        message: trimmed,
       })
     );
-    setMessage('');
+    setMessage("");
   };
 
   return (
@@ -27,6 +30,12 @@ const SendMessage = () => {
         className="input input-bordered input-primary w-full"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            handleSendMessage();
+          }
+        }}
       />
       <button
         onClick={handleSendMessage}
